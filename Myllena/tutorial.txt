@@ -1,0 +1,5 @@
+Para VScode
+
+Para criar um ambiente virtual: python -m venv venv
+Para ativar o ambiente virtual: .\venv\Scripts\activate
+Para instalar as dependências do projeto: pip install -r requirements.txt
