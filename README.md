@@ -18,3 +18,5 @@ Na main encontram-se duas pastas:
 
 - P001: Abrange a resolução da prática um referente a utilização de pacotes.
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
+
+As demais branches possuem organização semelhantes a main.
