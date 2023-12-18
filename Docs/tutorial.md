@@ -43,11 +43,11 @@ Após escolher o ambiente desejado, volte ao Home e caso já esteja instalado ex
 
 # Tutorial Ambiente virtual com Venv utilizando Visual Studio Code
 
-Com a extensão **Python** oferecida pela Microsoft instalada, os seguintes passos são necessários para criação e ativação do ambiente virtual:
+Com a extensão ***Python*** oferecida pela Microsoft instalada, os seguintes passos são necessários para criação e ativação do ambiente virtual:
 
 Criação:
 
-No terminal, digite ```python -m venv nome_do_ambiente``` e um ambiente virtual chamado **nome_do_ambiente** será criado.
+No terminal, digite ```python -m venv nome_do_ambiente``` e um ambiente virtual chamado ***nome_do_ambiente*** será criado.
 
 Ativação: 
 
