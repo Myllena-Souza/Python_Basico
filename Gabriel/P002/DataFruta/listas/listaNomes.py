@@ -6,8 +6,8 @@ class ListaNomes(AnaliseDados):
         super().__init__(type("String"))
         self.__lista = []        
 
-    @property
-    def Lista(self):
+    
+    def getLista(self):
         return self.__lista.copy()
     
     def addNome(self):

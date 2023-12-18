@@ -6,8 +6,7 @@ class ListaSalarios(AnaliseDados):
         super().__init__(type(float))
         self.__lista = lista.copy()  
 
-    @property
-    def Lista(self):
+    def getLista(self):
         return self.__lista.copy()
     
     def addSalario(self):

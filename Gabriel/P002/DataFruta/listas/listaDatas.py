@@ -7,8 +7,7 @@ class ListaDatas(AnaliseDados):
         super().__init__(type(Data))
         self.__lista = []
     
-    @property
-    def Lista(self):
+    def getLista(self):
         return self.__lista.copy()
     
     def addData(self):
