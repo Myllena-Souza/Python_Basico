@@ -1,5 +1,6 @@
 # Python Básico
 
+<<<<<<< HEAD
 ### Membros:
 
 Allana Campos - allanacampos50@gmail.com
@@ -20,3 +21,6 @@ Na main encontram-se duas pastas:
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
+=======
+### Branch com desenvolvimento individual do residente Gabriel dos Santos Sousa
+>>>>>>> 977d86b3840cd8a6765707bd909a2d08ba5906cf
