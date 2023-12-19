@@ -39,15 +39,15 @@ class ListaIdades(AnaliseDados):
             resultado = ListaIdades.calculaMedia(listaOrdenada[(listaOrdenada.__len__()//2)-1], listaOrdenada[(listaOrdenada.__len__()//2)])
         else:
             resultado = listaOrdenada[listaOrdenada.__len__() // 2]
-        print(f"Mediana das idades: {resultado}")     
+        return resultado     
     
     def mostraMenor(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Menor idade: {listaOrdenada[0]}")
+        return listaOrdenada[0]
     
     def mostraMaior(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Maior idade: {listaOrdenada[listaOrdenada.__len__() - 1]}") 
+        return listaOrdenada[listaOrdenada.__len__() - 1]
 
     def listarEmOrdem(self):
         listaOrdenada = sorted(self.__lista)

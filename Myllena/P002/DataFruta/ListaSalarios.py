@@ -1,14 +1,14 @@
-from DataFruta import AnaliseDados
+from DataFruta.analiseDados import AnaliseDados
 import random
 class ListaSalarios(AnaliseDados):
 
-    def __init__(self):
+    def __init__(self, lista = None):
         super().__init__(type(float))
         for i in lista:
             if type(i) != float:
-                raise Exception ("Tipo inválido para salário")
-        self.__lista = lista   
-
+                raise Exception ("Tipo inválido para salário") 
+        self.__lista = lista
+        
     @property
     def lista(self):
         return self.__lista.copy()
@@ -38,15 +38,15 @@ class ListaSalarios(AnaliseDados):
             resultado = ListaSalarios.calculaMedia(listaOrdenada[(listaOrdenada.__len__()//2)-1], listaOrdenada[(listaOrdenada.__len__()//2)])
         else:
             resultado = listaOrdenada[listaOrdenada.__len__() // 2]
-        print(f"Mediana dos salários: {resultado}")     
+        return resultado   
 
     def mostraMenor(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Menor salário: {listaOrdenada[0]}")
+        return listaOrdenada[0]
 
     def mostraMaior(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Maior salário: {listaOrdenada[listaOrdenada.__len__() - 1]}") 
+        return listaOrdenada[listaOrdenada.__len__() - 1]
     
     def reajusteDezPorcento(self):
         for i in map((lambda s : s + s*0.1), self.__lista):
