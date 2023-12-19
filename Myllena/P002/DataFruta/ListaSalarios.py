@@ -1,27 +1,36 @@
-from DataFruta import AnaliseDados, ListaNomes
-
+from DataFruta import AnaliseDados
+import random
 class ListaSalarios(AnaliseDados):
 
     def __init__(self):
         super().__init__(type(float))
-        self.__lista = []   
+        for i in lista:
+            if type(i) != float:
+                raise Exception ("Tipo inválido para salário")
+        self.__lista = lista   
 
     @property
     def lista(self):
-        return self.__lista
+        return self.__lista.copy()
     
     def addSalario(self):
         print("Informe o salário")
-        salario = float(input())
-        self.__lista.append(salario)     
-
+        try:
+            salario = float(input())
+            self.__lista.append(salario)     
+        except Exception as ex:
+            print(ex)
+            
     def entradaDeDados(self):
         print("Quantos elementos existirão na lista de salários?")
         qtd = int(input())
-        for i in range(qtd):
-            print(f"Digite o salário {i+1}:")
-            valor = float(input())
-            self.__lista.append(valor)
+        try:
+            for i in range(qtd):
+                print(f"Digite o salário {i+1}:")
+                valor = float(input())
+                self.__lista.append(valor)
+        except Exception as ex:
+            print(ex)
 
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
@@ -60,7 +69,9 @@ class ListaSalarios(AnaliseDados):
         media = (a + b) / 2
         return media
     
-    
-    
-    
-    
+    def geraListaSalario(n, salarioMin = 1320, salarioMax = 13200):
+        salarios = []
+        for i in range(n):
+            salarios.append(random.uniform(salarioMin, salarioMax))
+        lista = ListaSalarios(salarios)
+        return lista

@@ -37,7 +37,5 @@ def main():
                 salarios.reajusteDezPorcento()
             case 7:
                 datas.modificaDataAnterior2019()
-
-
 if __name__ == "__main__":
     main()
