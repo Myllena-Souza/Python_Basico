@@ -1,25 +1,38 @@
 from DataFruta import AnaliseDados
-
+import random
 
 class ListaIdades(AnaliseDados):
     
-    def __init__(self):
+    def __init__(self, lista = None):
         super().__init__(type(int))
-        self.__lista = []  
-
+        for i in lista:
+            if type(i) != int:
+                raise Exception ("Idade invalida")
+        self.__lista = lista
+        
+    @property
+    def lista(self):
+        return self.__lista.copy()
+    
     def addIdade(self):
         print("Informe a idade")
-        idade = int(input())
-        self.__lista.append(idade)
-    
+        try:
+            idade = int(input())
+            self.__lista.append(idade)
+        except Exception as ex:
+            print(ex)
+            
     def entradaDeDados(self):
         print("Quantos elementos existirão na lista de idades?")
         qtd = int(input())
-        for i in range(qtd):
-            print(f"Digite a idade {i+1}:")
-            valor = int(input())
-            self.__lista.append(valor)
-    
+        try:
+            for i in range(qtd):
+                print(f"Digite a idade {i+1}:")
+                valor = int(input())
+                self.__lista.append(valor)
+        except Exception as ex:
+            print(ex)
+            
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
         if listaOrdenada.__len__() % 2 == 0:
@@ -52,3 +65,10 @@ class ListaIdades(AnaliseDados):
     def calculaMedia(a, b):
         media = (a + b) / 2
         return media
+    
+    def geraListaIdade(n, idadeMin = 18, idadeMax = 65):
+        idades = []
+        for i in range(n):
+            idades.append(random.randint(idadeMin, idadeMax))
+        lista = ListaIdades(idades)
+        return lista
