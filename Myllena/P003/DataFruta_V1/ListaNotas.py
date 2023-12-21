@@ -14,12 +14,24 @@ class ListaNotas(AnaliseDados):
     def lista(self):
         return self.__lista.copy()
     
-    def geraListaIdade(n, idadeMin = 18, idadeMax = 65):
-        idades = []
-        for i in range(n):
-            idades.append(random.randint(idadeMin, idadeMax))
-        lista = ListaNotas(idades)
-        return lista
+    def addNota(self):
+        print("Informe a Nota")
+        try:
+            nota = float(input())
+            self.__lista.append(nota)
+        except Exception as ex:
+            print(ex)
+            
+    def entradaDeDados(self):
+        print("Quantos elementos existirão na lista de notas?")
+        qtd = int(input())
+        try:
+            for i in range(qtd):
+                print(f"Digite a nota {i+1}:")
+                valor = float(input())
+                self.__lista.append(valor)
+        except Exception as ex:
+            print(ex)
     
     def mostraMedia(a, b):
         media = (a + b) / 2
@@ -58,18 +70,12 @@ class ListaNotas(AnaliseDados):
         return len(self.__lista)/y
     
     def mostraDesvPadPopulacional(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista)) ** 1/2
+        variacia = self.mostraVariPopulacional()
+        return  variacia  ** 1/2
     
     def mostraDesvPadAmostral(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista) - 1) ** 1/2
+        variacia = self.mostraVariAmostral()
+        return  variacia  ** 1/2
     
     def mostraVariPopulacional(self):
         media = self.mostraMediaAritmetica()
@@ -85,16 +91,22 @@ class ListaNotas(AnaliseDados):
             soma += (i - media) ** 2
         return (soma/len(self.__lista) - 1)
     
-    def contarNotasAcimaDe(self, n):
-        cont = 0
-        for i in self.__lista:
-            if i > n:
-                cont += 1
-        return cont
+    def maiorque(self, n):
+        maior = [notas for notas in self.__lista if notas > n]
+        return maior
     
-    def contarNotasAbaixoDe(self, n):
-        cont = 0
-        for i in self.__lista:
-            if i < n:
-                cont += 1
-        return cont
+    def menorQue(self, n):
+        menor = [notas for notas in self.__lista if notas < n]
+        return menor
+    
+    def aprovados(self, media):
+        aprovados = [notas for notas in self.__lista if notas >= media]
+        return aprovados
+
+    def reprovados(self, media):
+        reprovados = [notas for notas in self.__lista if notas < media]
+        return reprovados
+    
+    def passarMaiorNotaPara10(self):
+        nota = self.mostraMaior()
+        self.__lista = [(notas*10)/nota for notas in self.__lista]
