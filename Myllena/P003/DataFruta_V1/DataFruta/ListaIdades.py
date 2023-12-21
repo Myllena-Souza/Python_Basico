@@ -1,6 +1,5 @@
-from DataFruta.analiseDados import AnaliseDados
+from DataFruta_V1 import AnaliseDados
 import random
-
 class ListaIdades(AnaliseDados):
     
     def __init__(self, lista = None):
@@ -33,13 +32,36 @@ class ListaIdades(AnaliseDados):
         except Exception as ex:
             print(ex)
             
+    def mostraMediaAritmetrica(self):
+        y = sum(self.__lista)
+        return y/len(self.__lista)
+    
+    def mostraMediaGeometrica(self):
+        y = 1
+        for i in self.__lista:
+            y *= i
+        return y ** (1/len(self.__lista))
+    
+    def mostraMediaHarmonica(self):
+        y = 0
+        for i in self.__lista:
+            y += 1/i
+        return len(self.__lista)/y
+            
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
         if listaOrdenada.__len__() % 2 == 0:
             resultado = ListaIdades.calculaMedia(listaOrdenada[(listaOrdenada.__len__()//2)-1], listaOrdenada[(listaOrdenada.__len__()//2)])
         else:
             resultado = listaOrdenada[listaOrdenada.__len__() // 2]
-        return resultado     
+        return resultado
+    
+    def mostraDesvioPadraoPopulacional(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista)) ** 1/2     
     
     def mostraMenor(self):
         listaOrdenada = sorted(self.__lista)

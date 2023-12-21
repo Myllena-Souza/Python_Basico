@@ -1,5 +1,4 @@
-from DataFruta import AnaliseDados, Data
-
+from DataFruta_V1 import AnaliseDados, Data
 class ListaDatas(AnaliseDados):
         
     def __init__(self):
@@ -12,7 +11,10 @@ class ListaDatas(AnaliseDados):
         dia = int(data.split(("/"))[0])
         mes = int(data.split(("/"))[1])
         ano = int(data.split(("/"))[2])
-        data = Data(dia, mes, ano)
+        try:
+            data = Data(dia, mes, ano)
+        except Exception as ex:
+            print (ex)
         self.__lista.append(data)
 
     def entradaDeDados(self):
@@ -24,7 +26,10 @@ class ListaDatas(AnaliseDados):
             dia = int(valor.split(("/"))[0])
             mes = int(valor.split(("/"))[1])
             ano = int(valor.split(("/"))[2])
-            data = Data(dia, mes, ano)
+            try:
+                data = Data(dia, mes, ano)
+            except Exception as ex:
+                print (ex)  
             self.__lista.append(data)
     
     def mostraMediana(self):
@@ -33,16 +38,16 @@ class ListaDatas(AnaliseDados):
             pos = (listaOrdenada.__len__() // 2) -1
         else:
             pos = listaOrdenada.__len__() // 2
-        print(f"Mediana das datas: {listaOrdenada[pos]}")    
+        return listaOrdenada[pos]   
      
     def mostraMenor(self):
         listaOrdenada = self.ordena()
-        print(f"Primeira data: {listaOrdenada[0]}")
+        return listaOrdenada[0]
     
     def mostraMaior(self):
         listaOrdenada = self.ordena()
-        print(f"Última data: {listaOrdenada[listaOrdenada.__len__() - 1]}")
-    
+        return listaOrdenada[listaOrdenada.__len__() - 1]
+        
     def modificaDataAnterior2019(self):
         for i in filter((lambda d : Data(ano=2019).__gt__(d)), self.__lista):
             print(f"Deseja alterar o dia da data {i} para qual dia?")
