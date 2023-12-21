@@ -1,4 +1,4 @@
-from DataFruta_V1 import AnaliseDados
+from DataFruta_V1.analiseDados import AnaliseDados
 import random
 class ListaSalarios(AnaliseDados):
 
