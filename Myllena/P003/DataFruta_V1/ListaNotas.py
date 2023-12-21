@@ -21,6 +21,10 @@ class ListaNotas(AnaliseDados):
         lista = ListaNotas(idades)
         return lista
     
+    def mostraMedia(a, b):
+        media = (a + b) / 2
+        return media
+    
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
         if listaOrdenada.__len__() % 2 == 0:
@@ -31,4 +35,66 @@ class ListaNotas(AnaliseDados):
     
     def calculaMaior(self):
         listaOrdenada = sorted(self.__lista)
-        return listaOrdenada[listaOrdenada.__len__() - 1]   
+        return listaOrdenada[listaOrdenada.__len__() - 1]
+    
+    def calculaMenor(self):
+        listaOrdenada = sorted(self.__lista)
+        return listaOrdenada[0]
+    
+    def mostraMediaAritmetrica(self):
+        y = sum(self.__lista)
+        return y/len(self.__lista)
+    
+    def mostraMediaGeometrica(self):
+        y = 1
+        for i in self.__lista:
+            y *= i
+        return y ** (1/len(self.__lista))
+    
+    def mostraMediaHarmonica(self):
+        y = 0
+        for i in self.__lista:
+            y += 1/i
+        return len(self.__lista)/y
+    
+    def mostraDesvPadPopulacional(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista)) ** 1/2
+    
+    def mostraDesvPadAmostral(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista) - 1) ** 1/2
+    
+    def mostraVariPopulacional(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista))
+    
+    def mostraVariAmostral(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista) - 1)
+    
+    def contarNotasAcimaDe(self, n):
+        cont = 0
+        for i in self.__lista:
+            if i > n:
+                cont += 1
+        return cont
+    
+    def contarNotasAbaixoDe(self, n):
+        cont = 0
+        for i in self.__lista:
+            if i < n:
+                cont += 1
+        return cont
