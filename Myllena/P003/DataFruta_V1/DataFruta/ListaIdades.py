@@ -56,12 +56,26 @@ class ListaIdades(AnaliseDados):
             resultado = listaOrdenada[listaOrdenada.__len__() // 2]
         return resultado
     
-    def mostraDesvioPadraoPopulacional(self):
+    def mostraDesvPadPopulacional(self):
         media = self.mostraMediaAritmetica()
         soma = 0
         for i in self.__lista:
             soma += (i - media) ** 2
-        return (soma/len(self.__lista)) ** 1/2     
+        return (soma/len(self.__lista)) ** 1/2
+    
+    def mostraDesvPadAmostral(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista) - 1) ** 1/2
+    
+    def mostraVariAmostral(self):
+        media = self.mostraMediaAritmetica()
+        soma = 0
+        for i in self.__lista:
+            soma += (i - media) ** 2
+        return (soma/len(self.__lista) - 1)
     
     def mostraMenor(self):
         listaOrdenada = sorted(self.__lista)
