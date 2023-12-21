@@ -70,7 +70,7 @@ class ListaIdades(AnaliseDados):
             soma += (i - media) ** 2
         return (soma/len(self.__lista) - 1) ** 1/2
     
-    def mostraVaruPopulacional(self):
+    def mostraVariPopulacional(self):
         media = self.mostraMediaAritmetica()
         soma = 0
         for i in self.__lista:
