@@ -1,4 +1,4 @@
-from DataFruta_V1.analiseDados import AnaliseDados
+from DataFruta_V1 import AnaliseDados
 import random
 
 class ListaNotas(AnaliseDados):
