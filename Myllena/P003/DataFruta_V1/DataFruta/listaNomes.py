@@ -1,5 +1,4 @@
-from DataFruta import AnaliseDados
-
+from DataFruta_V1 import AnaliseDados
 class ListaNomes(AnaliseDados):
     
     def __init__(self):
@@ -29,15 +28,15 @@ class ListaNomes(AnaliseDados):
             pos = (listaOrdenada.__len__() // 2) -1
         else:
             pos = listaOrdenada.__len__() // 2
-        print(f"Mediana dos nomes: {listaOrdenada[pos]}")    
+        return listaOrdenada[pos]  
 
     def mostraMenor(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Primeiro nome: {listaOrdenada[0]}")
+        return listaOrdenada[0]
 
     def mostraMaior(self):
         listaOrdenada = sorted(self.__lista)
-        print(f"Último nome: {listaOrdenada[listaOrdenada.__len__() - 1]}")  
+        return listaOrdenada[listaOrdenada.__len__() - 1]  
 
     def listarEmOrdem(self):
         listaOrdenada = sorted(self.__lista)
