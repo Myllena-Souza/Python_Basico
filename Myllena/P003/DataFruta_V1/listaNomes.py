@@ -1,4 +1,5 @@
 from DataFruta_V1.analiseDados import AnaliseDados
+
 class ListaNomes(AnaliseDados):
     
     def __init__(self):

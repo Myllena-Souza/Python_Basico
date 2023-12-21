@@ -1,5 +1,5 @@
-from DataFruta_V1 import AnaliseDados
-from DataFruta_V1 import Data
+from DataFruta_V1.analiseDados import AnaliseDados
+from DataFruta_V1.Datas import Data
 
 class ListaDatas(AnaliseDados):
         

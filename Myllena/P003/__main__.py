@@ -11,7 +11,7 @@ def main():
     idades = ListaIdades()
     op = 0
     while(op != 8):
-        print("<----------MENU---------->")
+        print("<--------------------------MENU--------------------------->")
         print("1- Incluir um nome na lista de nomes")
         print("2- Incluir um salário na lista de salários")
         print("3- Incluir uma data na lista de datas")
@@ -20,6 +20,7 @@ def main():
         print("6- Calcular o valor da folha com um reajuste de 10%")
         print("7- Modificar o dia das datas anteriores a 2019")
         print("8- Sair")
+        print("--------------------------------------------------------")
         op = int(input())
 
         match(op):
