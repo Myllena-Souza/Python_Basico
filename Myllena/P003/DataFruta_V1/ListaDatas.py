@@ -1,4 +1,6 @@
-from DataFruta_V1 import AnaliseDados, Data
+from DataFruta_V1 import AnaliseDados
+from DataFruta_V1 import Data
+
 class ListaDatas(AnaliseDados):
         
     def __init__(self):
