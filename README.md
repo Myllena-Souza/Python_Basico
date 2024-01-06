@@ -25,6 +25,11 @@ Na main encontram-se as seguintes pastas:
         - classes: Contém a classe data
         - listas: Contém as classes de listas
      - exerciciosP002.ipynb: Contém os testes com as comparações entre listas e ndarrays.
+- P003: Corresponde a resolução da prática três adicionando a lista de notas e novos métodos estatísticos. Possui:
+    - DataFruta_V1: Pacote com as classes correspondentes a cada uma das listas e organizado em 3 pastas:
+        - app: Contém o menu
+        - listas: Contém as classes de listas
+        - resources: Contém a classe data e analiseDados
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
