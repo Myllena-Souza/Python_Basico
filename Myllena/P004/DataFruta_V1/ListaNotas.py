@@ -1,4 +1,5 @@
 from DataFruta_V1.analiseDados import AnaliseDados
+import numpy as np
 import random
 
 class ListaNotas(AnaliseDados):
@@ -16,27 +17,32 @@ class ListaNotas(AnaliseDados):
     
     def addNota(self):
         print("Informe a Nota")
+        size = len(self.__lista)
+        newLista = np.zeros(size+1)
+        newLista [:-1] = self.__lista
         try:
             nota = float(input())
-            self.__lista.append(nota)
+            self.__lista = newLista
+            self.__lista[-1] = nota
         except Exception as ex:
             print(ex)
             
     def entradaDeDados(self):
         print("Quantos elementos existirão na lista de notas?")
         qtd = int(input())
+        self.__lista = np.zeros(qtd)
         try:
             for i in range(qtd):
                 print(f"Digite a nota {i+1}:")
                 valor = float(input())
-                self.__lista.append(valor)
+                self.__lista[i] = valor
         except Exception as ex:
             print(ex)
     
     def mostraMedia(a, b):
         media = (a + b) / 2
         return media
-    
+
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
         if listaOrdenada.__len__() % 2 == 0:
@@ -46,67 +52,66 @@ class ListaNotas(AnaliseDados):
         return resultado
     
     def calculaMaior(self):
-        listaOrdenada = sorted(self.__lista)
-        return listaOrdenada[listaOrdenada.__len__() - 1]
+        return self.__lista.max()
     
     def calculaMenor(self):
-        listaOrdenada = sorted(self.__lista)
-        return listaOrdenada[0]
+        return self.__lista.min()
     
     def mostraMediaAritmetrica(self):
-        y = sum(self.__lista)
-        return y/len(self.__lista)
+        
+        return self.__lista.mean()
     
     def mostraMediaGeometrica(self):
-        y = 1
-        for i in self.__lista:
-            y *= i
+        y = np.prod(self.__lista)
         return y ** (1/len(self.__lista))
     
     def mostraMediaHarmonica(self):
-        y = 0
-        for i in self.__lista:
-            y += 1/i
+        y = 1/self.__lista
+        y = np.sum(y)
         return len(self.__lista)/y
     
     def mostraDesvPadPopulacional(self):
-        variacia = self.mostraVariPopulacional()
-        return  variacia  ** 1/2
+        return self.__lista.std(ddof=0)
     
     def mostraDesvPadAmostral(self):
-        variacia = self.mostraVariAmostral()
-        return  variacia  ** 1/2
+        return self.__lista.std(ddof=1)
     
     def mostraVariPopulacional(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista))
+        return self.__lista.var(ddof=0)
     
     def mostraVariAmostral(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista) - 1)
+        return self.__lista.var(ddof=1)
     
     def maiorque(self, n):
-        maior = [notas for notas in self.__lista if notas > n]
+        filtro = self.__lista > n
+        maior = self.__lista[filtro]
         return maior
     
     def menorQue(self, n):
-        menor = [notas for notas in self.__lista if notas < n]
+        filtro = self.__lista < n
+        menor = self.__lista[filtro]
         return menor
     
+    def listarEmOrdem(self):
+        listaOrdenada = sorted(self.__lista)
+        for i in listaOrdenada:
+            print(str(i))
+    
+    def geraListaNotas(n, iMin = 0, iMax = 10):
+        notas = [random.uniform(iMin, iMax) for _ in range(n)] 
+        lista = ListaNotas(np.array(notas))
+        return lista
+    
     def aprovados(self, media):
-        aprovados = [notas for notas in self.__lista if notas >= media]
+        filtro = self.__lista >= media
+        aprovados = self.__lista[filtro]
         return aprovados
 
     def reprovados(self, media):
-        reprovados = [notas for notas in self.__lista if notas < media]
+        filtro = self.__lista < media
+        reprovados = self.__lista[filtro]
         return reprovados
     
     def passarMaiorNotaPara10(self):
         nota = self.mostraMaior()
-        self.__lista = [(notas*10)/nota for notas in self.__lista]
+        self.__lista = (self.__lista * 10) / nota
