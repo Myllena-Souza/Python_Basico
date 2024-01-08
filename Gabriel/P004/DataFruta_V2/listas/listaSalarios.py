@@ -44,11 +44,12 @@ class ListaSalarios(AnaliseDados):
         return np.median(self.__lista)
     
     def mostraMedianaInferior(self):
-        listaInf = self.lista[:self.__lista.size//2]
+        
+        listaInf = np.sort(self.lista)[:self.__lista.size//2]
         return np.median(listaInf)
             
     def mostraMedianaSuperior(self):
-        listaSup = self.lista[self.__lista.size//2:]
+        listaSup = np.sort(self.lista)[self.__lista.size//2:]
         return np.median(listaSup)
 
 
