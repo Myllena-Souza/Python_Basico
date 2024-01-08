@@ -30,6 +30,13 @@ Na main encontram-se as seguintes pastas:
         - app: Contém o menu
         - listas: Contém as classes de listas
         - resources: Contém a classe data e analiseDados
+- P004: Corresponde a resolução da prática quatro introduzindo a nova versão para as listas utilizando ndarray e uma classe para notas de uma turma. Possui:
+    - DataFruta_V1: Pacote com as classes correspondentes a cada uma das listas e organizado em 3 pastas:
+        - app: Contém o menu
+        - listas: Contém as classes de listas
+        - resources: Contém a classe data e analiseDados
+     - DataFruta_V2: Semelhante a DataFruta_V1 com a implementação utilizando ndarray
+     - comparacao.ipynb: Contém a comparação entre as duas versões.
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
