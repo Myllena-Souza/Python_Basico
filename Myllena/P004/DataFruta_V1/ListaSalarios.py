@@ -1,36 +1,42 @@
 from DataFruta_V1.analiseDados import AnaliseDados
+import numpy as np
 import random
 class ListaSalarios(AnaliseDados):
 
-    def __init__(self, lista = None):
+    def __init__(self, lista=None):
         super().__init__(type(float))
-        for i in lista:
-            if type(i) != float:
-                raise Exception ("Tipo inválido para salário") 
-        self.__lista = lista
-        
+        if(lista.dtype == float):
+            self.__lista = lista.copy()  
+        else:
+            self.__lista = np.zeros(0)
+
     @property
     def lista(self):
         return self.__lista.copy()
     
     def addSalario(self):
         print("Informe o salário")
+        size = len(self.__lista)
+        newLista = np.zeros(size+1)
+        newLista[:-1] = self.__lista
         try:
             salario = float(input())
-            self.__lista.append(salario)     
-        except Exception as ex:
-            print(ex)
-            
+            self.__lista = newLista
+            self.__lista[-1] = salario
+        except Exception as e:
+            print(e)      
+
     def entradaDeDados(self):
         print("Quantos elementos existirão na lista de salários?")
         qtd = int(input())
+        self.__lista = np.zeros(qtd)
         try:
             for i in range(qtd):
                 print(f"Digite o salário {i+1}:")
                 valor = float(input())
-                self.__lista.append(valor)
-        except Exception as ex:
-            print(ex)
+                self.__lista[i] = valor
+        except Exception as e:
+            print(e) 
 
     def mostraMediana(self):
         listaOrdenada = sorted(self.__lista)
@@ -38,59 +44,63 @@ class ListaSalarios(AnaliseDados):
             resultado = ListaSalarios.calculaMedia(listaOrdenada[(listaOrdenada.__len__()//2)-1], listaOrdenada[(listaOrdenada.__len__()//2)])
         else:
             resultado = listaOrdenada[listaOrdenada.__len__() // 2]
-        return resultado
+        return resultado 
     
+    def mostraMedianaInferior(self):
+        listaOrdenada = sorted(self.__lista)
+        if len(listaOrdenada) % 2 == 0:
+            if ((listaOrdenada.__len__()//2)-1) % 2 == 0:
+                return listaOrdenada[int((listaOrdenada.__len__()/4)-1/2)]
+            else:
+                return ListaSalarios.calculaMedia(listaOrdenada[int((listaOrdenada.__len__()/4)-1/4)], listaOrdenada[int(listaOrdenada.__len__()/4)])
+        else:
+            if (listaOrdenada.__len__()//2) % 2 == 0:
+                return ListaSalarios.calculaMedia(listaOrdenada[int((listaOrdenada.__len__()//2)/2-1)], listaOrdenada[int((listaOrdenada.__len__()//2)/2)])
+            else:
+                return listaOrdenada[int(listaOrdenada.__len__()//4)]
+            
+    def mostraMedianaSuperior(self):
+        listaOrdenada = sorted(self.__lista)
+        if len(listaOrdenada) % 2 == 0:
+            if ((listaOrdenada.__len__()//2)-1) % 2 == 0:
+                return listaOrdenada[-int((listaOrdenada.__len__()//4) + 1)]
+            else:
+                return ListaSalarios.calculaMedia(listaOrdenada[-int((listaOrdenada.__len__()//2)/2+1)], listaOrdenada[-int((listaOrdenada.__len__()//4))])
+        else:
+            if (listaOrdenada.__len__()//2) % 2 == 0:
+                return ListaSalarios.calculaMedia(listaOrdenada[-int((listaOrdenada.__len__()//2)/2+1)], listaOrdenada[-int((listaOrdenada.__len__()//2)/2)])
+            else:
+                return listaOrdenada[-int((listaOrdenada.__len__()//4)+1)]
+
     def mostraMediaAritmetica(self):
-        y = sum(self.__lista)
-        return y/len(self.__lista)
-    
+        return self.__lista.mean()
+
     def mostraMediaGeometrica(self):
-        y = 1
-        for i in self.__lista:
-            y *= i
-        return y ** (1/len(self.__lista))
+        x = np.prod(self.__lista)
+        return x ** (1/len(self.__lista))
     
     def mostraMediaHarmonica(self):
-        y = 0
-        for i in self.__lista:
-            y += 1/i
-        return len(self.__lista)/y
+        x = 1/self.__lista
+        x =  np.sum(x)
+        return len(self.__lista)/x
     
     def mostraDesvPadPopulacional(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista)) ** 1/2
+        return self.__lista.std(ddof=0)
     
-    def mostraDesvPadAmostral(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista) - 1) ** 1/2
+    def mostraDesPadAmostral(self):
+        return self.__lista.std(ddof=1)
     
     def mostraVarianciaPopulacional(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista))
+        return self.__lista.var(ddof=0)
     
     def mostraVarianciaAmostral(self):
-        media = self.mostraMediaAritmetica()
-        soma = 0
-        for i in self.__lista:
-            soma += (i - media) ** 2
-        return (soma/len(self.__lista) - 1)
+        return self.__lista.var(ddof=1)
     
     def mostraMenor(self):
-        listaOrdenada = sorted(self.__lista)
-        return listaOrdenada[0]
+        return self.__lista.min()
 
     def mostraMaior(self):
-        listaOrdenada = sorted(self.__lista)
-        return listaOrdenada[listaOrdenada.__len__() - 1]
+        return self.__lista.max()
     
     def reajusteDezPorcento(self):
         for i in map((lambda s : s + s*0.1), self.__lista):
@@ -112,10 +122,8 @@ class ListaSalarios(AnaliseDados):
     def calculaMedia(a, b):
         media = (a + b) / 2
         return media
-    
-    def geraListaSalario(n, salarioMin = 1320, salarioMax = 13200):
-        salarios = []
-        for i in range(n):
-            salarios.append(random.uniform(salarioMin, salarioMax))
-        lista = ListaSalarios(salarios)
+
+    def geraListaSalario(n, iMin = 1320, iMax = 13200):
+        salarios = [random.uniform(iMin, iMax) for _ in range(n)]
+        lista = ListaSalarios(np.array(salarios))
         return lista

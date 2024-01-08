@@ -1,3 +1,4 @@
+from operator import index
 import numpy as np
 
 class NotasTurma:
@@ -12,5 +13,35 @@ class NotasTurma:
                 self.notas[i,k] = nota
                 
     def mediaTurma(self):
+        return self.notas.mean()
     
+    def mediaAluno (self):
+        return self.notas[index].mean()
+    
+    def mediaAvaliacao(self, index = 0):
+        return self.notas[:, index].mean()
+    
+    def quantAprovados(self):
+        aprovados = self.notas.mean(axis=1) >= 6
+        return aprovados.sum()
+    
+    def quantReprovados(self):
+        reprovados = self.notas.mean(axis=1) < 6
+        return reprovados.sum()
+    
+    def menorNota(self):
+        menorNotaAvaliacao = self.notas.min(axis=0)
+        menorMedia = self.notas.mean(axis=1).min()
+        return menorNotaAvaliacao, menorMedia
+    
+    def maiorNota(self):
+        maiorNotaAvaliacao = self.notas.max(axis=0)
+        maiorMedia = self.notas.mean(axis=1).max()
+        return maiorNotaAvaliacao, maiorMedia
+    
+    def __str__(self):
+        tx = "Alunos\t|\tNotas\n"
+        for i in range(len(self.notas)):
+            tx += (str(i) + "\t|\t" + str(self.notas[i]) + "\n")
+        return tx
     
