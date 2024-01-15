@@ -37,6 +37,8 @@ Na main encontram-se as seguintes pastas:
         - resources: Contém a classe data e analiseDados
      - DataFruta_V2: Semelhante a DataFruta_V1 com a implementação utilizando ndarray
      - comparacao.ipynb: Contém a comparação entre as duas versões.
+- P005: Corresponde a resolução da prática cinco com utilização da biblioteca pandas com os objetos Index, Series e DataFrame. Possui:
+    - P005.ipynb: Notebook com as resoluções para cada exercício.
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
