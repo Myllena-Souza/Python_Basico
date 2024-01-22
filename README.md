@@ -43,6 +43,12 @@ Na main encontram-se as seguintes pastas:
     - restic: Pacote organizado em 3 pastas:
         - app: Contém o menu
         - classes: Contém as classes de trilha, residentes e residência
+- P007: Corresponde a resolução da prática sete com manipulação de dataframe. Possui:
+    - dataFrames: Pasta com os conjuntos de dados utilizados.
+    - arq.ipynb: Notebook com as resoluções para cada exercício.
+- P008: Corresponde a resolução da prática oito com manipulação de array e DateTimeIndex. Possui:
+    - dataFrames: Pasta com os conjuntos de dados utilizados.
+    - arq.ipynb: Notebook com as resoluções para cada exercício.
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
