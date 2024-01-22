@@ -39,6 +39,10 @@ Na main encontram-se as seguintes pastas:
      - comparacao.ipynb: Contém a comparação entre as duas versões.
 - P005: Corresponde a resolução da prática cinco com utilização da biblioteca pandas com os objetos Index, Series e DataFrame. Possui:
     - P005.ipynb: Notebook com as resoluções para cada exercício.
+- P006: Corresponde a resolução da prática seis com a criação de um pacote e classes representando as trilhas, os residentes e a residência. Possui:
+    - restic: Pacote organizado em 3 pastas:
+        - app: Contém o menu
+        - classes: Contém as classes de trilha, residentes e residência
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
