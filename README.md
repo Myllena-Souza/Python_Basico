@@ -54,5 +54,4 @@ Na main encontram-se as seguintes pastas:
 
 As demais branches possuem organização semelhantes a main.
 =======
-### Branch com desenvolvimentos individuais do residente Gabriel dos Santos Sousa
->>>>>>> 2828b7777d6291fa08d95a5d9481471bc9b71d32
+
