@@ -52,5 +52,3 @@ Na main encontram-se as seguintes pastas:
 - Docs: Apresenta um tutorial para a utilização de ambientes virtuais com Python.
 
 As demais branches possuem organização semelhantes a main.
-=======
-
