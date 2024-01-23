@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Python Básico
 
 ### Membros:
